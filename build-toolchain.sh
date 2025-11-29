@@ -10,6 +10,14 @@ function msg() {
 # Don't touch repo if running on CI
 [ -z "$GH_RUN_ID" ] && repo_flag="--shallow-clone" || repo_flag="--no-update"
 
+# Getting Binutils source
+BINUTILS_RELEASE=2.35.2
+msg "Downloading binutils $BINUTILS_RELEASE source"
+curl -O https://ftp.gnu.org/gnu/binutils/binutils-$BINUTILS_RELEASE.tar.gz
+tar -xvf binutils-$BINUTILS_RELEASE.tar.gz
+BINUTILS_DIR=$(pwd)/binutils-$BINUTILS_RELEASE
+msg "Binutils dir is $BINUTILS_DIR"
+
 # Build LLVM
 msg "Building LLVM..."
 ./build-llvm.py \
