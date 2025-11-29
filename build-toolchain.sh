@@ -29,7 +29,7 @@ msg "Building LLVM..."
 
 # Build binutils
 msg "Building binutils..."
-./build-binutils.py --targets arm aarch64 x86_64
+./build-binutils.py --binutils-folder $BINUTILS_DIR --targets arm aarch64 x86_64
 
 # Remove unused products
 msg "Removing unused products..."
