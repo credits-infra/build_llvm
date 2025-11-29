@@ -1,22 +1,15 @@
-name: Build & upload toolchain
+name: Build & upload toolchain for Apple Container
 on:
   push:
     branches:
-      - master
-  schedule:
-    # 3 PM PST on Saturdays
-    - cron: '0 22 * * SAT'
+      - container
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
     steps:
     - uses: actions/checkout@v4
     - name: Install dependencies
       run: bash ci.sh deps
     - name: Build LLVM
-      run: bash ci.sh llvm
-    - name: Build binutils
-      run: bash ci.sh binutils
-    - name: Build kernel
-      run: bash ci.sh kernel
+      run: bash ./build-toolchain.sh
