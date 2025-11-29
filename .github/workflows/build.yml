@@ -1,8 +1,6 @@
 name: Build & upload toolchain for Apple Container
 on:
-  push:
-    branches:
-      - container
+  workflow_dispatch:
 
 jobs:
   build:
