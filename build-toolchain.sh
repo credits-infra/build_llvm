@@ -14,6 +14,7 @@ function msg() {
 msg "Building LLVM..."
 ./build-llvm.py \
 	--targets "ARM;AArch64;X86" \
+	--ref llvmorg-14.0.6
 	"$repo_flag" \
 	--pgo kernel-defconfig \
 	--lto thin
